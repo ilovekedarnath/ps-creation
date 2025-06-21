@@ -37,6 +37,13 @@ class CartItem(db.Model):
     quantity = db.Column(db.Integer, default=1)
 
 # -------------------- ROUTES --------------------
+@app.route('/init-db')
+def init_db():
+    with app.app_context():
+        db.create_all()
+    return "✅ Database initialized!"
+
+
 @app.route('/')
 def home():
     return redirect('/login')
