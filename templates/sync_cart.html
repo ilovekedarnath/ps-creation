@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Syncing Cart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+    <p>🔄 Syncing your cart... Please wait.</p>
+
+    <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const isNew = urlParams.get('new') === '1';
+    const next = urlParams.get('next') || 'store';
+    const redirectUrl = `/${next}${isNew ? '?new=1' : ''}`;
+
+    // ✅ Step 1: Clear old cart to avoid cross-user mixup
+    localStorage.removeItem('cart');
+
+    // ✅ Step 2: Load cart from DB
+    fetch('/get-cart')
+        .then(res => {
+            if (!res.ok) throw new Error("Not logged in");
+            return res.json();
+        })
+        .then(serverCart => {
+            // ✅ Step 3: Save cart to localStorage
+            localStorage.setItem('cart', JSON.stringify(serverCart || []));
+
+            // ✅ Step 4: Re-save cart to DB (even if empty)
+            return fetch('/save-cart', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(serverCart || [])
+            });
+        })
+        .then(res => {
+            if (!res.ok) throw new Error("Failed to save cart");
+            // ✅ Step 5: Redirect to next page, passing new=1 if new user
+            window.history.replaceState({}, document.title, redirectUrl);
+            window.location.href = redirectUrl;
+        })
+        .catch(err => {
+            console.error("❌ Cart sync failed:", err);
+            alert("⚠️ Could not sync cart. Please log in.");
+            window.location.href = "/login";
+        });
+</script>
+
+</body>
+</html>

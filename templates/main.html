@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>PS Creation</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+
+    </head>
+
+    <body data-logged-in="{{ 'true' if username else 'false' }}">
+
+        
+        <header style="display: flex; align-items: center; justify-content: space-between; padding: 10px 20px; background-color: #fff;">
+    <!-- Left: Logo -->
+    <div style="display: flex; align-items: center;">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBi2s2ifRR87b1UQ4taaorfoGGC9lWVOqf2w&s" alt="PS Creation Logo" style="height: 50px; margin-right: 10px;">
+        
+        {% if username %}
+        <span style="font-weight: bold; white-space: nowrap;">👋 Hello, {{ username }}</span>
+        {% endif %}
+    </div>
+
+    <!-- Center: Search bar -->
+    <div class="search-container" style="flex-grow: 1; max-width: 500px; margin: 0 20px;">
+        <input type="text" id="search-bar" placeholder="Search for products..." onkeyup="searchProduct()" style="width: 80%; padding: 5px;">
+        <button onclick="searchProduct()" style="padding: 6px 10px;">🔍</button>
+    </div>
+
+    <!-- Right: Cart & Logout -->
+    <div style="display: flex; align-items: center; gap: 20px;">
+        <!-- Cart -->
+        <a href="/sync-cart" class="cart-icon" style="position: relative;">
+            <span id="cart-count" class="cart-count" style="position: absolute; top: -8px; right: -8px; background: red; color: white; border-radius: 50%; padding: 2px 6px; font-size: 12px;">0</span>
+            <img src="https://images.vexels.com/media/users/3/200097/isolated/preview/942820836246f08c2d6be20a45a84139-shopping-cart-icon-shopping-cart.png" alt="Cart" style="height: 30px;">
+        </a>
+
+        <!-- Logout -->
+        <a href="/logout" class="logout-link" title="Logout">
+            <img src="https://cdn-icons-png.flaticon.com/512/16383/16383592.png" alt="Logout" style="height: 24px;">
+        </a>
+    </div>
+</header>
+
+    
+        <h2>Tea, Coffee & Health Drinks</h2>
+        <div class="products" id="product-list">
+            <div class="product" data-name="Tea">
+                <img src="https://ikneadtoeat.com/wp-content/uploads/2019/01/Masala-Chai-Recipe-1.jpg" alt="Tea">
+                <h3>Tea</h3>
+                <p><strong>Price: $2.50</strong></p>
+                <button class="add-to-cart" onclick="addToCart('Tea', 2.50,'https://ikneadtoeat.com/wp-content/uploads/2019/01/Masala-Chai-Recipe-1.jpg')">Add to Cart</button>
+            </div>
+            <div class="product" data-name="Coffee">
+                <img src="https://media.istockphoto.com/id/503636498/photo/ladys-hands-holding-cup-with-sth-heart-shaped.jpg?s=612x612&w=0&k=20&c=3lpXk7jl2CRPfMiq37aXNIgdfcFfN-BIDNMDqr6f8qE=" alt="Coffee">
+                <h3>Coffee</h3>
+                <p><strong>Price: $3.00</strong></p>
+                <button class="add-to-cart" onclick="addToCart('Coffee', 3.00, 'https://media.istockphoto.com/id/503636498/photo/ladys-hands-holding-cup-with-sth-heart-shaped.jpg?s=612x612&w=0&k=20&c=3lpXk7jl2CRPfMiq37aXNIgdfcFfN-BIDNMDqr6f8qE=')">Add to Cart</button>
+            </div>
+            <div class="product" data-name="health Drink">
+                <img src="https://c.ndtvimg.com/2023-10/j9q17m2g_drinks_625x300_22_October_23.jpg" alt="Health Drink">
+                <h3>Health Drink</h3>
+                <p><strong>Price: $4.00</strong></p>
+                <button class="add-to-cart" onclick="addToCart('Health Drink', 4.00,'https://c.ndtvimg.com/2023-10/j9q17m2g_drinks_625x300_22_October_23.jpg')">Add to Cart</button>
+            </div>
+            <div class="product" data-name="Vegan Drink">
+                <img src="https://www.eatingwell.com/thmb/bqrbfaeglB7Gy2Twiw5mRVfLVyI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/8265029-f31794103dd7432d927a3ac95a9be6a7.jpg" alt="Vegan Drinks">
+                <h3>Vegan Drinks</h3>
+                <p><strong>Price: $5.00</strong></p>
+                <button class="add-to-cart" onclick="addToCart('Vegan Drinks', 5.00,'https://www.eatingwell.com/thmb/bqrbfaeglB7Gy2Twiw5mRVfLVyI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/8265029-f31794103dd7432d927a3ac95a9be6a7.jpg')">Add to Cart</button>
+            </div>
+            <div class="product" data-name="green tea">
+                <img src="https://imgs.search.brave.com/lJq9VSJcv86EFlGPHxyUgbKI_BXjVJkoZOPXVGGckDM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzAwLzgwLzgwLzAx/LzM2MF9GXzgwODAw/MTUzX21aaFBwSHVS/TE9JQ3hGZ21SaUg3/R092RUxKWjJCNExv/LmpwZw" alt="Green Tea">
+                <h3>Green Tea</h3>
+                <p><strong>Price: $3.50</strong></p>
+                <button class="add-to-cart" onclick="addToCart('Green Tea', 3.50,'https://imgs.search.brave.com/lJq9VSJcv86EFlGPHxyUgbKI_BXjVJkoZOPXVGGckDM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzAwLzgwLzgwLzAx/LzM2MF9GXzgwODAw/MTUzX21aaFBwSHVS/TE9JQ3hGZ21SaUg3/R092RUxKWjJCNExv/LmpwZw')">Add to Cart</button>
+            </div>
+        </div>
+
+        <h2>Hair & Beauty</h2>
+        <div class="products" id="product-list">
+            <div class="product" data-name="hair care">
+                <img src="https://media.istockphoto.com/id/1159037549/photo/beautiful-brown-haired-girl-with-a-perfectly-curls-hair-and-classic-make-up-beauty-face-and.jpg?s=612x612&w=0&k=20&c=yIkepJHens3SZFi4cobrgR-U_vXiFld88ewMotYfyeU=" alt="Hair Care">
+                <h3>Hair Care</h3>
+                <p><strong>Price: $10.00</strong></p>
+                <button class="add-to-cart" onclick="addToCart('Hair Care', 10.00, 'https://media.istockphoto.com/id/1159037549/photo/beautiful-brown-haired-girl-with-a-perfectly-curls-hair-and-classic-make-up-beauty-face-and.jpg?s=612x612&w=0&k=20&c=yIkepJHens3SZFi4cobrgR-U_vXiFld88ewMotYfyeU=')">Add to Cart</button>
+            </div>
+            <div class="product" data-name="beauty and Makeup">
+                <img src="https://cdn.britannica.com/35/222035-131-9FC95B31/makeup-cosmetics.jpg" alt="Beauty and Makeup">
+                <h3>Beauty and Makeup</h3>
+                <p><strong>Price: $15.00</strong></p>
+                <button class="add-to-cart" onclick="addToCart('Beauty and Makeup', 15.00, 'https://cdn.britannica.com/35/222035-131-9FC95B31/makeup-cosmetics.jpg')">Add to Cart</button>
+            </div>
+            <div class="product" data-name="Eyeliner">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlo4RbaYxoUEjE2rpI7l-YSsyjA9UmYO57Ow&s" alt="Eyeliner">
+                <h3>Eyeliner</h3>
+                <p><strong>Price: $8.00</strong></p>
+                <button class="add-to-cart" onclick="addToCart('Eyeliner', 8.00, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlo4RbaYxoUEjE2rpI7l-YSsyjA9UmYO57Ow&s')">Add to Cart</button>
+            </div>
+            <div class="product" data-name="Lipstick">
+                <img src="https://images.ctfassets.net/wlke2cbybljx/6Z75K7EQh8g4FfDz4TrtyZ/db8c19ba086ca39a187640400ba323b3/LIPSTICKS_X10_Square_RGB.jpg" alt="Lipstick">
+                <h3>Lipstick</h3>
+                <p><strong>Price: $12.00</strong></p>
+                <button class="add-to-cart" onclick="addToCart('Lipstick', 12.00, 'https://images.ctfassets.net/wlke2cbybljx/6Z75K7EQh8g4FfDz4TrtyZ/db8c19ba086ca39a187640400ba323b3/LIPSTICKS_X10_Square_RGB.jpg')">Add to Cart</button>
+            </div>
+            <div class="product" data-name="bb & cc Cream">
+                <img src="https://ponds.in/cdn/shop/articles/bg4.jpg?v=1675838422" alt="BB & CC Cream">
+                <h3>BB & CC Cream</h3>
+                <p><strong>Price: $20.00</strong></p>
+                <button class="add-to-cart" onclick="addToCart('BB & CC Cream', 20.00, 'https://ponds.in/cdn/shop/articles/bg4.jpg?v=1675838422')">Add to Cart</button>
+            </div>
+        </div>
+
+        <h2>Dairy, Bread & Eggs</h2>
+        <div class="products" id="product-list">
+            <div class="product" data-name="Cheese">
+                <img src="https://static.toiimg.com/thumb/msid-115029115,width-400,resizemode-4/115029115.jpg" alt="Cheese">
+                <h3>Cheese</h3>
+                <p><strong>Price: $5.00</strong></p>
+                <button class="add-to-cart" onclick="addToCart('Cheese', 5.00, 'https://static.toiimg.com/thumb/msid-115029115,width-400,resizemode-4/115029115.jpg')">Add to Cart</button>
+            </div>
+            <div class="product" data-name="curd & Yogurt">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS0b6MhdcJ5M8XJY-S4tK_SOcf3xj2jluGXA&s" alt="Curd & Yogurt">
+                <h3>Curd & Yogurt</h3>
+                <p><strong>Price: $3.50</strong></p>
+                <button class="add-to-cart" onclick="addToCart('Curd & Yogurt', 3.50, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS0b6MhdcJ5M8XJY-S4tK_SOcf3xj2jluGXA&s')">Add to Cart</button>
+            </div>
+            <div class="product" data-name="condensed Milk">
+                <img src="https://www.biggerbolderbaking.com/wp-content/uploads/2016/03/IMG_0593.jpg" alt="Condensed Milk">
+                <h3>Condensed Milk</h3>
+                <p><strong>Price: $4.00</strong></p>
+                <button class="add-to-cart" onclick="addToCart('Condensed Milk', 4.00, 'https://www.biggerbolderbaking.com/wp-content/uploads/2016/03/IMG_0593.jpg')">Add to Cart</button>
+            </div>
+            <div class="product" data-name="buns & Pav">
+                <img src="https://rumkisgoldenspoon.com/wp-content/uploads/2021/06/Ladi-pav-recipe.jpg" alt="Buns & Pav">
+                <h3>Buns & Pav</h3>
+                <p><strong>Price: $2.00</strong></p>
+                <button class="add-to-cart" onclick="addToCart('Buns & Pav', 2.00, 'https://rumkisgoldenspoon.com/wp-content/uploads/2021/06/Ladi-pav-recipe.jpg')">Add to Cart</button>
+            </div>
+            <div class="product" data-name="Milk">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKRc1vsNojeMRzLpjSF-_g3ihYlGBwVgpNqw&s" alt="Milk">
+                <h3>Milk</h3>
+                <p><strong>Price: $1.50</strong></p>
+                <button class="add-to-cart" onclick="addToCart('Milk', 1.50, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKRc1vsNojeMRzLpjSF-_g3ihYlGBwVgpNqw&s')">Add to Cart</button>
+            </div>
+        </div>
+        
+        <h2>Cold Drinks & Juices</h2>
+        <div class="products" id="product-list">
+            <div class="product" data-name="Energy drinks">
+                <img src="https://indian-retailer.s3.ap-south-1.amazonaws.com/s3fs-public/2024-11/Untitled%20design%20%2843%29.jpg" alt="Energy Drinks">
+                <h3>Energy Drinks</h3>
+                <p><strong>Price: $4.50</strong></p>
+                <button class="add-to-cart" onclick="addToCart('Energy Drinks', 4.50, 'https://indian-retailer.s3.ap-south-1.amazonaws.com/s3fs-public/2024-11/Untitled%20design%20%2843%29.jpg')">Add to Cart</button>
+            </div>
+            <div class="product" data-name="Coconut Water">
+                <img src="https://images.immediate.co.uk/production/volatile/sites/30/2024/06/Coconut-water700-d717060.jpg?quality=90&fit=700,350" alt="Coconut Water">
+                <h3>Coconut Water</h3>
+                <p><strong>Price: $3.00</strong></p>
+                <button class="add-to-cart" onclick="addToCart('Coconut Water', 3.00, 'https://images.immediate.co.uk/production/volatile/sites/30/2024/06/Coconut-water700-d717060.jpg?quality=90&fit=700,350')">Add to Cart</button>
+            </div>
+            <div class="product" data-name="Concentrates & Syrups">
+                <img src="https://c8.alamy.com/comp/KPMGM5/bangkok-thailand-chakphet-road-juice-concentrates-and-syrups-for-fruit-KPMGM5.jpg" alt="Concentrates & Syrups">
+                <h3>Concentrates & Syrups</h3>
+                <p><strong>Price: $5.00</strong></p>
+                <button class="add-to-cart" onclick="addToCart('Concentrates & Syrups', 5.00, 'https://c8.alamy.com/comp/KPMGM5/bangkok-thailand-chakphet-road-juice-concentrates-and-syrups-for-fruit-KPMGM5.jpg')">Add to Cart</button>
+            </div>
+            <div class="product" data-name="Sharbat">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLBCMfK3IE1Tt8mSsXhImEtclsAdlYEHxHDQ&s" alt="Sharbat">
+                <h3>Sharbat</h3>
+                <p><strong>Price: $3.50</strong></p>
+                <button class="add-to-cart" onclick="addToCart('Sharbat', 3.50, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLBCMfK3IE1Tt8mSsXhImEtclsAdlYEHxHDQ&s')">Add to Cart</button>
+            </div>
+            <div class="product" data-name="Mango Juice">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFTMAWUlaT_w6PibUDr0-pmD-qzBKS8RiYzw&s" alt="Mango Juice">
+                <h3>Mango Juice</h3>
+                <p><strong>Price: $4.00</strong></p>
+                <button class="add-to-cart" onclick="addToCart('Mango Juice', 4.00, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFTMAWUlaT_w6PibUDr0-pmD-qzBKS8RiYzw&s')">Add to Cart</button>
+            </div>
+        </div>
+        <footer>
+            <p>&copy; 2025 PSCreation All Rights Reserved.</p>
+            <p class="credits">Designed by Mr. Parth Sudani</p>
+        </footer>
+
+
+            <div id="toast" class="toast"></div>
+        <!-- ✅ Welcome Modal -->
+<div id="welcome-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:1000;">
+    <div style="background:white; padding:30px; border-radius:8px; max-width:400px; margin:100px auto; text-align:center; box-shadow:0 0 20px rgba(0,0,0,0.3); position:relative;">
+        <h2>🎉 Welcome to PS Creation!</h2>
+        <p>Your account was created successfully.</p>
+        <button onclick="closeModal()" style="margin-top:15px; padding:10px 20px; background:#28a745; color:white; border:none; border-radius:5px; cursor:pointer;">Let's Go!</button>
+    </div>
+</div>
+
+        <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    </body>
+</html>

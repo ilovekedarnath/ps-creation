@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='store.css') }}">
+    <meta name="theme-color" content="#ffffff">
+</head>
+<body data-logged-in="{{ 'true' if session.get('username') else 'false' }}">
+
+    <h2>Your Shopping Cart</h2>
+
+    <div id="cart-container">
+        <ul id="cart-items">
+            <!-- JS will render cart items here -->
+        </ul>
+        <p id="total-price"><strong>Total: $0</strong></p>
+        <button id="clear-cart">🧹 Clear Cart</button>
+        <button id="checkout">🛒 Proceed to Checkout</button>
+    </div>
+
+    <a href="/main" class="back-link">← Continue Shopping</a>
+
+    <footer>
+        <p>&copy; 2025 PSCreation All Rights Reserved.</p>
+        <p class="credits">Designed by Mr. Parth Sudani</p>
+    </footer>
+
+   <!-- ✅ Toast Notification -->
+<div id="toast" class="toast" style="
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 6px;
+    display: none;
+    z-index: 1000;
+    font-size: 14px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+"></div>
+
+<!-- ✅ Link working JavaScript -->
+<script src="{{ url_for('static', filename='js/store.js') }}"></script>
+</body>
+</html>
