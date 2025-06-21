@@ -2,4 +2,3 @@ Flask
 Flask-SQLAlchemy
 python-dotenv
 itsdangerous
-gunicorn  # ✅ add this
