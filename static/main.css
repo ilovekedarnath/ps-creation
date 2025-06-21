@@ -1,0 +1,510 @@
+ body {
+            font-family: 'Poppins', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            background: url('https://images.pexels.com/photos/994605/pexels-photo-994605.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center center fixed;
+            background-size: cover;
+            
+            }
+            
+            header {
+                background-color: #58b4ff;
+                color: white;
+                padding: 15px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                position: sticky;
+                top: 0;
+                z-index: 1000;
+            }
+            
+            .nav-left img {
+                height: 60px;
+                max-width: 100%;
+                border-radius: 18px; /* Rounds the edges */
+                border: 4px solid #333;
+            }
+            
+            .nav-right {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                flex-grow: 1;
+            }
+            
+            .search-container {
+                display: flex;
+                align-items: center;
+                background: white;
+                padding: 12px;
+                border-radius: 8px;
+                max-width: 700px;
+                margin: 20px auto;
+                box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+                flex-grow: 1;
+            }
+            
+            .search-container input {
+                flex-grow: 1;
+                padding: 12px;
+                border: none;
+                outline: none;
+                font-size: 16px;
+                border-radius: 8px;
+            }
+            
+            .search-container button {
+                padding: 12px;
+                background-color: #28a745;
+                color: white;
+                border: none;
+                cursor: pointer;
+                border-radius: 8px;
+                transition: 0.3s;
+            }
+            
+            .search-container button:hover {
+                background-color: #218838;
+            }
+            
+            .icons img {
+                width: 60px;
+                height: auto;
+            }
+            
+            h2 {
+                background-color: #28a745;
+                color: white;
+                padding: 10px;
+                border-radius: 5px;
+                text-align: center;
+            }
+            
+            .products {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 20px;
+                padding: 20px;
+                justify-content: center;
+                text-align: center;
+            }
+            
+            .product {
+                background: white;
+                padding: 15px;
+                border-radius: 10px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                text-align: center;
+                position: relative;
+                transition: transform 0.3s, box-shadow 0.3s;
+            }
+            
+            .product:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            }
+            
+            .product img {
+                width: 100%;
+                max-width: 160px;
+                height: 160px;
+                object-fit: cover;
+                display: block;
+                margin: auto;
+                border-radius: 10px;
+                cursor: pointer;
+                transition: opacity 0.3s;
+            }
+            
+            .product:hover img {
+                opacity: 0.8;
+            }
+            
+            .product h3 {
+                margin: 10px 0;
+            }
+            
+            .add-to-cart {
+                display: none;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: rgba(0, 0, 0, 0.8);
+                color: white;
+                padding: 10px;
+                border: none;
+                cursor: pointer;
+                border-radius: 8px;
+                transition: 0.3s;
+            }
+            
+            .product:hover .add-to-cart {
+                display: block;
+            }
+            
+            .add-to-cart:hover {
+                background-color: #ff4500;
+            }
+            
+            ul {
+                list-style-type: none;
+                padding: 0;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 20px;
+            }
+            
+            li {
+                background: white;
+                padding: 10px;
+                border-radius: 5px;
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            li img {
+                width: 100px;
+                height: auto;
+                margin-bottom: 10px;
+            }
+            
+            button {
+                background-color: #28a745;
+                color: white;
+                border: none;
+                padding: 5px 10px;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+            
+            .hidden {
+                display: none;
+            }
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #f8f9fa;
+            }
+            
+            .nav-right {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                flex-grow: 1;
+                gap: 20px; /* Adds spacing between cart and login */
+            }
+            
+            .taskbar-icons {
+                display: flex;
+                align-items: center;
+                gap: 20px; /* Adjust spacing as needed */
+            }
+            
+            .taskbar {
+                position: relative; /* Remove fixed position */
+                top: auto;
+                right: auto;
+                background-color: white;
+                padding: 10px 15px;
+                border-radius: 20px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+                display: flex;
+                align-items: center;
+            }
+            
+            
+            .user-icon {
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+            }
+            
+            .user-icon img {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+            }
+            
+            /* Login Form */
+            .container {
+                display: none;
+                position: absolute;
+                top: 60px;
+                right: 10px;
+                background: white;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                width: 300px;
+                text-align: center;
+            }
+            
+            h2 {
+                margin-bottom: 15px;
+            }
+
+            .input-group {
+                text-align: left;
+                margin-bottom: 15px;
+            }
+
+            .input-group label {
+                display: block;
+                font-size: 14px;
+                margin-bottom: 5px;
+            }
+
+            .input-group input {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                font-size: 14px;
+                outline: none;
+                transition: border-color 0.3s ease-in-out;
+            }
+
+            .input-group input:focus {
+                border-color: #007bff;
+            }
+
+            .password-container {
+                position: relative;
+            }
+
+            .toggle-password {
+                position: absolute;
+                right: 10px;
+                top: 50%;
+                transform: translateY(-50%);
+                cursor: pointer;
+                color: #555;
+                transition: color 0.3s ease-in-out;
+            }
+
+            .toggle-password:hover {
+                color: #007bff;
+            }
+
+            .btn {
+                width: 100%;
+                padding: 10px;
+                background-color: #007bff;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                font-size: 16px;
+                cursor: pointer;
+                transition: background-color 0.3s ease-in-out;
+            }
+
+            .btn:hover {
+                background-color: #0056b3;
+            }
+
+            .switch-text {
+                margin-top: 10px;
+                font-size: 14px;
+            }
+
+            .switch-text a {
+                color: #007bff;
+                cursor: pointer;
+                text-decoration: none;
+                transition: color 0.3s ease-in-out;
+            }
+
+            .switch-text a:hover {
+                color: #0056b3;
+                text-decoration: underline;
+            }
+
+            /* Base Styles */
+            header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px 20px;
+                background-color: #fff;
+                
+            }
+
+            .nav-left img {
+                max-width: 150px;
+            }
+
+            .nav-right {
+                display: flex;
+                align-items: center;
+            }
+
+            .search-container {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .search-container input {
+                padding: 5px 10px;
+            }
+
+            .taskbar-icons {
+                display: flex;
+                gap: 20px;
+                align-items: center;
+                height: 60px;
+            }
+
+            .taskbar-icons .icons img,
+            .taskbar-icons .taskbar img {
+                width: 24px;
+                height: 24px;
+            }
+
+            /* Mobile-specific styles */
+            @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: center;
+                padding: 15px;
+            }
+
+            .nav-left {
+                order: 1;
+                text-align: center;
+                width: 100%;
+            }
+
+            .nav-left img {
+                max-width: 120px;
+            }
+
+            .nav-right {
+                width: 100%;
+                justify-content: center;
+                order: 2;
+                margin-top: 10px;
+            }
+
+            .search-container {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .taskbar-icons {
+                justify-content: space-around;
+                width: 100%;
+                margin-top: 10px;
+                order: 3;
+            }
+
+            .container {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 999;
+                display: none; /* Initially hidden */
+            }
+
+            #form-container {
+                background: #fff;
+                padding: 20px;
+                border-radius: 10px;
+                width: 90%;
+                max-width: 400px;
+            }
+
+            #form-title {
+                text-align: center;
+            }
+
+            /* Show form container on form toggle */
+            #form-container.show {
+                display: flex;
+            }
+            }
+
+             /* PC-specific styles (no changes needed) */
+            @media (min-width: 769px) {
+            header {
+                flex-direction: row;
+            }
+
+            .nav-left {
+                order: 1;
+            }
+
+            .nav-right {
+                order: 2;
+            }
+
+            .taskbar-icons {
+                order: 3;
+            }
+            }
+            /* Hover effect on the taskbar icons */
+            .taskbar-icons .icons img,
+            .taskbar-icons .taskbar img {
+                width: 50px;
+                height: 50px;
+                transition: transform 0.3s ease, filter 0.3s ease;
+            }
+
+            .taskbar-icons .icons img:hover,
+            .taskbar-icons .taskbar img:hover {
+                transform: scale(1.2);  /* Enlarge the icon */
+                filter: brightness(1.2); /* Slightly brighten the icon */
+            }
+             /* Footer Styling */
+            footer {
+                background-color: #333; /* Dark background */
+                color: #fff; /* White text */
+                text-align: center; /* Center text */
+                padding: 15px 0; /* Add padding */
+                width: 100%; /* Full width */
+                bottom: 0; /* Stick to bottom */
+                font-family: Arial, sans-serif; /* Set font */
+                font-size: 14px; /* Adjust font size */
+            }
+            .credits {
+                font-size: 12px; /* Slightly smaller text */
+                opacity: 0.8; /* Reduce brightness */
+            }
+
+
+
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #28a745;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 9999;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.toast.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
