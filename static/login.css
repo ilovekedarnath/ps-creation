@@ -1,0 +1,248 @@
+/* 🌐 Base Reset */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: #f2f2f2;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/* 🔰 Logo Styling */
+.logo-container {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #a74c28;
+    background: #fff;
+}
+
+.logo-container img {
+    height: 110px;
+    border-radius: 15px;
+    border: 2px solid #28a745;
+    display: block;
+    margin: auto;
+}
+
+/* 🙏 Welcome Text */
+.welcome, .wel {
+    text-align: center;
+    margin-top: 10px;
+    padding: 0 20px;
+}
+
+.welcome h1 {
+    color: #1900ff;
+    font-size: 20px;
+}
+
+.wel h3 {
+    font-size: 16px;
+    color: #333;
+}
+
+/* 🔐 Login / Signup Container */
+.login-container {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    width: 350px;
+    max-width: 90%;
+    text-align: center;
+    margin: 20px 0;
+    transition: all 0.3s ease-in-out;
+}
+#switch-text {
+    cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+    font-size: 14px;
+    text-align: center;
+}
+
+#switch-text:hover {
+    color: #0056b3;
+}
+
+/* 📥 Form Inputs */
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    transition: all 0.2s ease-in-out;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input:focus {
+    outline: none;
+    border: 2px solid #28a745;
+    box-shadow: 0 0 5px rgba(40,167,69,0.3);
+}
+
+/* 👁️ Eye Icon Styling */
+input[type="password"] {
+    padding-right: 35px;
+}
+
+span[onclick^="toggleVisibility"] {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    opacity: 0.6;
+    font-size: 16px;
+    padding: 5px;
+}
+
+span[onclick^="toggleVisibility"]:hover {
+    opacity: 1;
+}
+
+/* ✅ Buttons */
+button {
+    width: 100%;
+    padding: 10px;
+    background: #28a745;
+    color: white;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 15px;
+    transition: background 0.2s ease-in-out;
+}
+
+button:hover {
+    background: #218838;
+}
+
+button:disabled {
+    background: gray;
+    cursor: not-allowed;
+}
+
+/* ❗ Error Message */
+.error {
+    color: red;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* 🔄 Toggle Link */
+.toggle-link {
+    text-align: center;
+    margin-top: 10px;
+    cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+    font-size: 14px;
+    transition: color 0.2s ease;
+}
+
+.toggle-link:hover {
+    color: #0056b3;
+}
+
+/* 📝 Password Checklist */
+#password-checklist {
+    font-size: 12px;
+    text-align: left;
+    padding-left: 20px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    display: none; /* JS toggles this */
+}
+
+/* 💬 Strength Message */
+.strength-msg {
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.strength-msg.weak {
+    color: red;
+}
+
+.strength-msg.medium {
+    color: orange;
+}
+
+.strength-msg.strong {
+    color: green;
+}
+
+/* 👣 Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 15px 0;
+    width: 100%;
+    font-size: 14px;
+    margin-top: auto;
+}
+
+footer .credits {
+    font-style: italic;
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+/* 📱 Responsive Styling */
+@media (max-width: 400px) {
+    .login-container {
+        padding: 20px;
+    }
+
+    .welcome h1 {
+        font-size: 18px;
+    }
+
+    .wel h3 {
+        font-size: 14px;
+    }
+
+    input, button {
+        font-size: 14px;
+    }
+
+    .toggle-link {
+        font-size: 13px;
+    }
+}
+.forgot-link {
+    text-align: right;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    font-size: 0.9em;
+}
+
+.forgot-link a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.forgot-link a:hover {
+    text-decoration: underline;
+}
+.back-link {
+    margin-top: 15px;
+    display: block;
+    text-align: center;
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 14px;
+}
