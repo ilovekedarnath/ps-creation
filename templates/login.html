@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login / Sign Up</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+</head>
+<body>
+
+    <!-- Logo Header -->
+    <div class="logo-container">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBi2s2ifRR87b1UQ4taaorfoGGC9lWVOqf2w&s" alt="PS Creation Logo">
+    </div>
+
+    <!-- Welcome Messages -->
+    <div class="welcome">
+        <h1>🙏 Welcome to PS Creation 🙏</h1>
+    </div>
+    <div class="wel">
+        <h3>Please enter your details to visit</h3>
+    </div>
+
+    <!-- Login/Signup Container -->
+    <div class="login-container">
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+        {% if signup_error %}
+            <p class="error">{{ signup_error }}</p>
+        {% endif %}
+        {% if success %}
+            <p style="color: green; font-weight: bold;">{{ success }}</p>
+        {% endif %}
+
+        <!-- Title controlled by JavaScript -->
+        <h2 id="form-title">Login</h2>
+
+        <!-- Login Form -->
+        <div id="login-form">
+            <form method="POST" action="/verify">
+                <label for="login-userid">User ID</label>
+                <input type="text" name="userid" id="login-userid" required>
+
+                <label for="login-password">Password</label>
+                <div style="position: relative;">
+                    <input type="password" name="password" id="login-password" required>
+                    <span onclick="toggleVisibility('login-password')" style="position: absolute; right: 10px; top: 10px; cursor: pointer;">👁️</span>
+                </div>
+
+                <button type="submit">Log In</button>
+
+                <!-- Forgot Password -->
+                <p class="forgot-link">
+                    <a href="/forgot-password">Forgot Password?</a>
+                </p>
+            </form>
+        </div>
+
+        <!-- Signup Form -->
+        <div id="signup-form" style="display: none;">
+            <form method="POST" action="/signup">
+                <label for="signup-userid">User ID</label>
+                <input type="text" name="userid" id="signup-userid" required>
+
+                <label for="signup-email">Email</label>
+                <input type="email" name="email" id="signup-email" required>
+
+                <label for="signup-password">Password</label>
+                <div style="position: relative;">
+                    <input type="password" name="password" id="signup-password" required oninput="checkPasswordStrength(this.value)">
+                    <span onclick="toggleVisibility('signup-password')" style="position: absolute; right: 10px; top: 10px; cursor: pointer;">👁️</span>
+                </div>
+
+                <!-- Password Requirements -->
+                <ul id="password-checklist">
+                    <li id="check-length">❌ At least 6 characters</li>
+                    <li id="check-uppercase">❌ Contains uppercase letter</li>
+                    <li id="check-lowercase">❌ Contains lowercase letter</li>
+                    <li id="check-number">❌ Contains a number</li>
+                    <li id="check-symbol">❌ Contains a symbol</li>
+                </ul>
+
+                <p id="strength-msg" class="strength-msg"></p>
+
+                <button type="submit" id="signup-btn" disabled>Create Account</button>
+            </form>
+        </div>
+
+        <!-- Toggle Link -->
+        <p id="switch-text" class="toggle-link"></p>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 PS Creation. All rights reserved.</p>
+        <p class="credits">Designed by Mr. Parth Sudani</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='js/login.js') }}"></script>
+</body>
+</html>
