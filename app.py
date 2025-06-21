@@ -14,7 +14,7 @@ load_dotenv()  # Load .env variables (for email credentials)
 EMAIL_USER = os.getenv("EMAIL_USER")
 EMAIL_PASS = os.getenv("EMAIL_PASS")
 
-app.secret_key = 'your-secret-key'
+app.secret_key = os.getenv("SECRET_KEY", "fallback-secret") 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
